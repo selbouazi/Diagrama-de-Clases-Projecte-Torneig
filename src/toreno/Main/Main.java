@@ -2,6 +2,7 @@ package toreno.Main;
 
 
 import java.util.ArrayList;
+
 import java.util.Scanner;
 
 import toreno.Model.Data;
@@ -10,7 +11,11 @@ import toreno.Model.Marcador;
 import toreno.Model.Nif;
 import toreno.Model.Partit;
 import toreno.Model.Torneig;
-
+/**
+ * Clase principal que gestiona un torneo de jugadores.
+ * Permite añadir jugadores, crear partidos y un torneo, 
+ * y mostrar información de todo.
+ */
 public class Main {
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -18,6 +23,10 @@ public class Main {
     private static final ArrayList<Partit> partidos = new ArrayList<>();
     private static Torneig torneig;
 
+    /**
+     * Método principal que ejecuta el programa y muestra el menú.
+     * @param args argumentos de línea de comandos (no utilizados)
+     */
     public static void main(String[] args) {
         int opcion;
 
@@ -42,6 +51,7 @@ public class Main {
         scanner.close();
     }
 
+    /** Muestra el menú principal por consola */
     private static void mostrarMenu() {
         System.out.println("\n===== GESTIÓ DE TORNEIGS =====");
         System.out.println("1. Afegir jugador");
@@ -53,6 +63,7 @@ public class Main {
         System.out.println("99. Sortir");
     }
 
+    /** Solicita los datos de un jugador y lo añade a la lista */
     private static void anadirJugador() {
         try {
             System.out.print("DNI (8 dígits): ");
@@ -96,6 +107,7 @@ public class Main {
         }
     }
 
+    /** Solicita los datos de un partido y lo añade a la lista */
     private static void anadirPartido() {
         if (jugadores.size() < 2) {
             System.out.println("Cal tenir almenys dos jugadors per crear un partit.");
@@ -136,6 +148,8 @@ public class Main {
         }
     }
 
+
+    /** Crea un torneo con los partidos existentes */
     private static void crearTorneo() {
         if (partidos.isEmpty()) {
             System.out.println("No hi ha partits per crear un torneig.");
@@ -164,6 +178,7 @@ public class Main {
         }
     }
 
+    /** Calcula el jugador con más victorias en el torneo */
     private static Jugador calcularGuanyadorTorneig(Partit[] arrayPartits) {
         var comptador = new java.util.HashMap<Jugador, Integer>();
 
@@ -182,6 +197,7 @@ public class Main {
         return guanyador;
     }
 
+    /** Muestra todos los jugadores registrados */
     private static void mostrarJugadores() {
         if (jugadores.isEmpty()) {
             System.out.println("No hi ha jugadors.");
@@ -194,6 +210,7 @@ public class Main {
         }
     }
 
+    /** Muestra todos los partidos registrados */
     private static void mostrarPartidos() {
         if (partidos.isEmpty()) {
             System.out.println("No hi ha partits.");
@@ -206,6 +223,7 @@ public class Main {
         }
     }
 
+    /** Muestra la información del torneo creado */
     private static void mostrarTorneo() {
         if (torneig == null) {
             System.out.println("No hi ha torneig creat.");
@@ -216,7 +234,7 @@ public class Main {
         System.out.println(torneig);
     }
 
-    // Lectura segura de entero
+    /** Lee un entero de forma segura desde la entrada estándar */
     private static int leerEntero() {
         while (true) {
             try {
@@ -228,7 +246,13 @@ public class Main {
         }
     }
 
-    // Lectura segura de entero con rango y mensaje de ejemplo
+    /**
+     * Lee un entero asegurando que está dentro de un rango.
+     * @param mensajeError mensaje de error en caso de valor incorrecto
+     * @param min valor mínimo permitido
+     * @param max valor máximo permitido
+     * @return entero válido dentro del rango
+     */
     private static int leerEnteroConEjemplo(String mensajeError, int min, int max) {
         while (true) {
             try {

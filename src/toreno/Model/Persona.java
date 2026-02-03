@@ -1,5 +1,8 @@
 package toreno.Model;
 
+/**
+ * Representa una persona con NIF, nombre y fecha de nacimiento.
+ */
 public class Persona {
 
 	/* -- Attributes --*/
@@ -30,6 +33,7 @@ public class Persona {
 	}
 	
 	/* -- Constructor -- */
+	/** Constructor de persona */
 	public Persona(Nif nif, String nom, Data dataNaixement) {
 		setNif(nif);
 		setNom(nom);
@@ -37,6 +41,7 @@ public class Persona {
 	}
 	
 	/* -- toString --*/
+	/** @return información de la persona como cadena */
 	@Override
 	public String toString() {
 		return "Nom: " + getNom() + ", Nif: " + getNif() + ", data de naixement: " + getDataNaixement() + ".";

@@ -1,5 +1,8 @@
 package toreno.Model;
 
+/**
+ * Representa un torneo con fecha, partidos y ganador.
+ */
 public class Torneig {
 
     /* -- Attributes -- */
@@ -42,6 +45,7 @@ public class Torneig {
     }
 
     /* -- Constructor -- */
+    /** Constructor del torneo */
     public Torneig(Data data, int partitsJugats, Partit[] partits, Jugador guanyador) {
         setData(data);
         setPartitsJugats(partitsJugats);
@@ -50,6 +54,7 @@ public class Torneig {
     }
 
     /* -- toString -- */
+    /** @return información del torneo como cadena */
     @Override
     public String toString() {
         return "Torneig{" +
