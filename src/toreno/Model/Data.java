@@ -1,4 +1,4 @@
-package Models;
+package toreno.Model;
 
 public class Data {
 
