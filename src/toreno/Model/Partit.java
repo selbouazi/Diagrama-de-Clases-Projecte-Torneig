@@ -3,6 +3,9 @@ package toreno.Model;
 public class Partit {
 
 	/* -- Attributes --*/
+	/**
+	 * Representa un partido entre dos jugadores.
+	 */
 	private Jugador participant1;
 	private Jugador participant2;
 	private Jugador guanyador;
@@ -35,6 +38,7 @@ public class Partit {
 	}
 	
 	/* -- Constructor -- */
+	/** Constructor de partido */
 	public Partit(Jugador participant1, Jugador participant2, Jugador guanyador, Marcador puntucaions) {
 		setParticipant1(participant1);
 		setParticipant2(participant2);
@@ -43,7 +47,8 @@ public class Partit {
 	}
 	
 	/* -- toString --*/
-	@Override
+	/** @return información del partido como cadena */
+    @Override
 	public String toString() {
 		return "Participants: " + getParticipant1() + " i " + getParticipant2() + ", el guanyador es: " + getGuanyador() + ", Puntuació: " + getPuntuacions() + ".";
 	}

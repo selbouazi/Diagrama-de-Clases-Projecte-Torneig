@@ -1,5 +1,8 @@
 package toreno.Model;
 
+/**
+ * Representa un NIF con número y letra.
+ */
 public class Nif {
 	
 	/* -- Attributes -- */
@@ -36,6 +39,7 @@ public class Nif {
 	}
 	
 	@Override
+	/** @return NIF como cadena */
 	public String toString() {
 		return getDni() + getLletra();
 	}

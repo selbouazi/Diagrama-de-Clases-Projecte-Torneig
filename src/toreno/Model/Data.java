@@ -1,9 +1,15 @@
 package toreno.Model;
 
+/**
+ * Representa una fecha con día, mes y año.
+ */
 public class Data {
 
+	/** Día de la fecha */
     private int dia;
+    /** Mes de la fecha */
     private int mes;
+    /** Año de la fecha */
     private int any;
 
     public int getDia() {
@@ -42,12 +48,14 @@ public class Data {
         this.any = any;
     }
 
+    /** Constructor que recibe día, mes y año */
     public Data(int dia, int mes, int any) {
         setMes(mes);
         setAny(any);
         setDia(dia);
     }
 
+    /** Calcula los días que tiene el mes de la fecha */
     private int diesMes() {
         int[] mesos31 = {1, 3, 5, 7, 8, 10, 12};
         int[] mesos30 = {4, 6, 9, 11};
@@ -71,10 +79,12 @@ public class Data {
         return 0;
     }
 
+    /** Determina si el año es bisiesto */
     private boolean esAnyDeTraspas() {
         return (getAny() % 4 == 0 && getAny() % 100 != 0) || (getAny() % 400 == 0);
     }
 
+    /** @return la fecha en formato DD/MM/YYYY */
     @Override
     public String toString() {
         return String.format("%02d/%02d/%04d", getDia(), getMes(), getAny());

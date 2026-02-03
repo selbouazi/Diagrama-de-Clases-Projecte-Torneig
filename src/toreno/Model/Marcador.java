@@ -1,5 +1,8 @@
 package toreno.Model;
 
+/**
+ * Representa el marcador de un partido.
+ */
 public class Marcador {
 
 	/* -- Attributes -- */
@@ -30,11 +33,13 @@ public class Marcador {
 	}
 	
 	/* -- Constructor -- */
+	/** Constructor con los puntos de cada jugador */
 	public Marcador(int puntsJugador1, int puntsJugador2) {
 		setPuntsJugador1(puntsJugador1);
 		setPuntsJugador2(puntsJugador2);
 	}
 	
+	/** @return puntos de ambos jugadores como cadena */
 	@Override
 	public String toString() {
 		return "Jugador 1: " + getPuntsJugador1() + " | Jugador 2: " + getPuntsJugador2();
