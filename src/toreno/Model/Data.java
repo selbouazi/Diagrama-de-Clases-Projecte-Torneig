@@ -1,4 +1,4 @@
-package toreno.Model;
+package Models;
 
 public class Data {
 
@@ -11,8 +11,11 @@ public class Data {
     }
 
     public void setDia(int dia) {
-        if (dia < 1 || dia > diesMes(this.mes, this.any)) {
-            throw new IllegalArgumentException("Día no válido");
+        if (getMes() < 1 || getMes() > 12 || getAny() < 1) {
+            throw new IllegalStateException("Mes y año deben estar establecidos antes del día");
+        }
+        if (dia < 1 || dia > diesMes()) {
+            throw new IllegalArgumentException("Día no válido para este mes y año");
         }
         this.dia = dia;
     }
@@ -45,21 +48,35 @@ public class Data {
         setDia(dia);
     }
 
-    private int diesMes(int mes, int any) {
-        return switch (mes) {
-            case 1,3,5,7,8,10,12 -> 31;
-            case 4,6,9,11 -> 30;
-            case 2 -> if esAnyDeTraspas(any) ? 29 : 28;
-            default -> 0;
-        };
+    private int diesMes() {
+        int[] mesos31 = {1, 3, 5, 7, 8, 10, 12};
+        int[] mesos30 = {4, 6, 9, 11};
+
+        for (int m : mesos31) {
+            if (getMes() == m) {
+                return 31;
+            }
+        }
+
+        for (int m : mesos30) {
+            if (getMes() == m) {
+                return 30;
+            }
+        }
+
+        if (getMes() == 2) {
+            return esAnyDeTraspas() ? 29 : 28;
+        }
+
+        return 0;
     }
 
-    private boolean esAnyDeTraspas(int any) {
-        return (any % 4 == 0 && any % 100 != 0) || (any % 400 == 0);
+    private boolean esAnyDeTraspas() {
+        return (getAny() % 4 == 0 && getAny() % 100 != 0) || (getAny() % 400 == 0);
     }
 
     @Override
     public String toString() {
-        return dia + "/" + mes + "/" + any;
+        return String.format("%02d/%02d/%04d", getDia(), getMes(), getAny());
     }
 }
